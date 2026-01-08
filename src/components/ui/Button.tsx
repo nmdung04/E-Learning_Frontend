@@ -40,7 +40,7 @@ export const Button = React.forwardRef<
     danger:
       "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
     icon: 
-        "bg-transparent  text-gray-900 p-2",
+        "bg-transparent text-gray-900 p-2",
   };
 
   return (

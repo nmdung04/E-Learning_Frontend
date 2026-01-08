@@ -3,33 +3,65 @@ import Logo from '../../../public/assets/Logo.svg';
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import type { Location } from "react-router-dom";
 import { AvatarMenuDropdown } from "../ui/AvatarMenuDropdown";
 
 type HeaderProps = {
   isLoggedIn: boolean;
 };
 
+type NavLink = {
+  href: string;
+  label: string;
+  ariaLabel: string;
+};
+
+const navLinks: NavLink[] = [
+  { href: "/", label: "Home", ariaLabel: "Home page" },
+  { href: "/courses", label: "Courses", ariaLabel: "Browse available courses" },
+  { href: "/about", label: "About", ariaLabel: "About our platform" },
+  { href: "/contact", label: "Contact", ariaLabel: "Contact us" },
+];
+
 export const Header = ({ isLoggedIn }: HeaderProps) => {
-    const [isOnMobile, setIsOnMobile] = useState(false);
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const location: Location = useLocation();
+
+    const isLinkActive = (href: string): boolean => {
+      return location.pathname === href;
+    };
+
     const handleMenuClick = () => {
-        setIsOnMobile(!isOnMobile);
+        setMobileMenuOpen(!isMobileMenuOpen);
     }
     return (
         <>
         <header className="w-full bg-white shadow-md py-2 px-2 flex flex-col items-center justify-between border-b border-gray-200">
             <div className="announcement bg-mint-50 rounded-md w-full py-2 px-4 mb-2 text-center">
-                <p className="text-sm text-white-600 bg-mint-50">Welcome to the English Learning App!</p>
+                <p className="text-sm text-white bg-mint-50">Welcome to the English Learning App!</p>
             </div>
             <div className="main-header sticky flex flex-row justify-between w-full py-1 md:px-4  ">
                 <div className="nav-bar flex flex-row items-center">
                     <a href="/" className="logo w-10">
                         <img src={Logo} alt="Logo"></img>
                     </a>
-                    <nav className="navigation ml-8 max-sm:hidden">
-                        <a href="#" className="text-gray-700 hover:text-gray-900 mx-4">Home</a>
-                        <a href="#" className="text-gray-700 hover:text-gray-900 mx-4">Courses</a>
-                        <a href="#" className="text-gray-700 hover:text-gray-900 mx-4">About</a>
-                        <a href="#" className="text-gray-700 hover:text-gray-900 mx-4">Contact</a>
+                    <nav className="navigation ml-8 max-sm:hidden" aria-label="Main navigation">
+                        {navLinks.map((link) => (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            className={`mx-4 ${
+                              isLinkActive(link.href)
+                                ? "text-mint-600 font-semibold"
+                                : "text-gray-700 hover:text-gray-900"
+                            }`}
+                            aria-label={link.ariaLabel}
+                            aria-current={isLinkActive(link.href) ? "page" : undefined}
+                          >
+                            {link.label}
+                          </a>
+                        ))}
                     </nav>
                 </div>
             
@@ -44,7 +76,7 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
                             </>
                         )       
                     }
-                    <Button variant="icon" className="transition-all duration-300 ease-in-out opacity-100 sm:hidden" onClick={handleMenuClick}> {isOnMobile ? <IoCloseSharp className="w-7 h-7 "/> : <RiMenu3Fill className="w-7 h-7"/>}</Button>
+                    <Button variant="icon" className="transition-all duration-300 ease-in-out opacity-100 sm:hidden" onClick={handleMenuClick}> {isMobileMenuOpen ? <IoCloseSharp className="w-7 h-7 "/> : <RiMenu3Fill className="w-7 h-7"/>}</Button>
                 </div>
             
             </div>
@@ -57,13 +89,26 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
                 overflow-hidden
                 sm:hidden
                 transition-all duration-300 ease-in-out 
-                ${isOnMobile ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}
+                ${isMobileMenuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}
               `}
+              role="navigation"
+              aria-label="Mobile navigation"
             >
-              <a href="#" className="block text-gray-15 py-2 px-1 my-2 cursor-pointer w-[30%]">Home</a>
-              <a href="#" className="block text-gray-15 py-2 px-1 my-2 cursor-pointer w-[30%]">Courses</a>
-              <a href="#" className="block text-gray-15 py-2 px-1 my-2 cursor-pointer w-[30%]">About</a>
-              <a href="#" className="block text-gray-15 py-2 px-1 my-2 cursor-pointer w-[30%]">Contact</a>
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`block py-2 px-1 my-2 cursor-pointer w-[30%] ${
+                    isLinkActive(link.href)
+                      ? "text-mint-600 font-semibold"
+                      : "text-gray-15"
+                  }`}
+                  aria-label={link.ariaLabel}
+                  aria-current={isLinkActive(link.href) ? "page" : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
 
         </>
