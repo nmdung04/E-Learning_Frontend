@@ -3,25 +3,29 @@ import { MdEdit } from 'react-icons/md';
 import { IoClose } from 'react-icons/io5';
 
 type ProfileFormData = {
-  firstName: string;
-  lastName: string;
+  username: string;
   email: string;
+  phoneNumber: string;
   location: string;
   goal: string;
   goalProgress: number;
 };
 
 const INITIAL_PROFILE: ProfileFormData = {
-  firstName: 'John',
-  lastName: 'Doe',
+  username: 'John Doe',
   email: 'john.doe@email.com',
+  phoneNumber: '+84 123 456 789',
   location: 'Vietnam',
   goal: 'Achieve fluent English communication in 6 months',
   goalProgress: 65,
 };
 
-const getInitials = (firstName: string, lastName: string) =>
-  `${firstName.trim().charAt(0)}${lastName.trim().charAt(0)}`.toUpperCase();
+const getInitials = (username: string) => {
+  if (!username) return 'U';
+  const parts = username.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+};
 
 export const UserInfoCard = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -94,7 +98,7 @@ export const UserInfoCard = () => {
                 />
               ) : (
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-linear-to-br from-mint-50 to-mint-70 flex items-center justify-center text-white font-bold text-3xl">
-                  {getInitials(profile.firstName, profile.lastName)}
+                  {getInitials(profile.username)}
                 </div>
               )}
             </div>
@@ -117,10 +121,9 @@ export const UserInfoCard = () => {
           {/* User Info */}
           <div className="flex-1">
             <div className="mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-15 mb-1">
-                {profile.firstName} {profile.lastName}
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-15 mb-1">{profile.username}</h2>
               <p className="text-gray-40">{profile.email}</p>
+              <p className="text-gray-40">{profile.phoneNumber}</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -158,8 +161,8 @@ export const UserInfoCard = () => {
 
       {/* Edit Modal */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-6 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto z-1">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-2xl font-bold text-gray-15">Edit Profile</h3>
               <button
@@ -171,28 +174,16 @@ export const UserInfoCard = () => {
             </div>
 
             <div className="space-y-5">
-              {/* Name Fields */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-15 mb-2">First Name</label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={draft.firstName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-white-90 rounded-lg focus:outline-none focus:border-mint-50 focus:ring-1 focus:ring-mint-50 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-15 mb-2">Last Name</label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={draft.lastName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-white-90 rounded-lg focus:outline-none focus:border-mint-50 focus:ring-1 focus:ring-mint-50 transition-colors"
-                  />
-                </div>
+              {/* Username */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-15 mb-2">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  value={draft.username}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-white-90 rounded-lg focus:outline-none focus:border-mint-50 focus:ring-1 focus:ring-mint-50 transition-colors"
+                />
               </div>
 
               {/* Email */}
@@ -207,44 +198,15 @@ export const UserInfoCard = () => {
                 />
               </div>
 
-              {/* Location */}
+              {/* Phone Number */}
               <div>
-                <label className="block text-sm font-semibold text-gray-15 mb-2">Location</label>
+                <label className="block text-sm font-semibold text-gray-15 mb-2">Phone Number</label>
                 <input
-                  type="text"
-                  name="location"
-                  value={draft.location}
+                  type="tel"
+                  name="phoneNumber"
+                  value={draft.phoneNumber}
                   onChange={handleInputChange}
                   className="w-full px-4 py-2 border border-white-90 rounded-lg focus:outline-none focus:border-mint-50 focus:ring-1 focus:ring-mint-50 transition-colors"
-                />
-              </div>
-
-              {/* Learning Goal */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-15 mb-2">Learning Goal</label>
-                <textarea
-                  name="goal"
-                  value={draft.goal}
-                  onChange={handleInputChange}
-                  rows={3}
-                  className="w-full px-4 py-2 border border-white-90 rounded-lg focus:outline-none focus:border-mint-50 focus:ring-1 focus:ring-mint-50 transition-colors resize-none"
-                />
-              </div>
-
-              {/* Goal Progress */}
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <label className="text-sm font-semibold text-gray-15">Goal Progress (%)</label>
-                  <span className="text-lg font-bold text-mint-50">{draft.goalProgress}%</span>
-                </div>
-                <input
-                  type="range"
-                  name="goalProgress"
-                  min="0"
-                  max="100"
-                  value={draft.goalProgress}
-                  onChange={handleInputChange}
-                  className="w-full h-2 bg-white-95 rounded-lg appearance-none cursor-pointer accent-mint-50"
                 />
               </div>
             </div>
