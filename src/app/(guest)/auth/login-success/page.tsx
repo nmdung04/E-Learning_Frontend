@@ -48,21 +48,21 @@ const GoogleLoginSuccessPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-[100vw] bg-[#F3F4F6] flex items-center justify-center p-4 font-sans">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-3">Google Sign In</h1>
-        <p className="text-gray-600 text-sm leading-relaxed mb-6">{message}</p>
+    <div className="min-h-screen w-[100vw] bg-white-97 flex items-center justify-center p-4 font-sans">
+      <div className="w-full max-w-md bg-white-99 rounded-3xl shadow-2xl p-8 text-center">
+        <h1 className="text-2xl font-bold text-gray-15 mb-3">Google Sign In</h1>
+        <p className="text-gray-30 text-sm leading-relaxed mb-6">{message}</p>
         {status === "error" && (
           <button
             onClick={handleBackToLogin}
-            className="w-full bg-gray-900 text-white font-semibold py-3 rounded-2xl hover:bg-black transition-all cursor-pointer"
+            className="w-full bg-mint-50 text-white font-semibold py-3 rounded-2xl hover:bg-mint-75 transition-all cursor-pointer"
           >
             Back to Login
           </button>
         )}
         {status === "loading" && (
-          <div className="flex items-center justify-center gap-2 text-gray-500 text-sm">
-            <span className="inline-flex h-3 w-3 animate-ping rounded-full bg-gray-400" />
+          <div className="flex items-center justify-center gap-2 text-gray-30 text-sm">
+            <span className="inline-flex h-3 w-3 animate-ping rounded-full bg-gray-40" />
             Please wait...
           </div>
         )}

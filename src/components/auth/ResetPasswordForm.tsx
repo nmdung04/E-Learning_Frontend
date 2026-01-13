@@ -105,12 +105,12 @@ const ResetPasswordForm = () => {
   };
 
   return (
-    <div className="min-h-screen w-[100vw] bg-[#F3F4F6] flex items-center justify-center p-4 lg:p-8 font-sans">
-      <div className="w-full max-w-[560px] bg-white rounded-3xl lg:rounded-[40px] shadow-2xl overflow-hidden">
+    <div className="min-h-screen w-[100vw] bg-white-97 flex items-center justify-center p-4 lg:p-8 font-sans">
+      <div className="w-full max-w-[560px] bg-white-99 rounded-3xl lg:rounded-[40px] shadow-2xl overflow-hidden">
         <div className="text-center pt-8 pb-6 px-6 lg:pt-10 lg:pb-8">
-          <p className="text-xs uppercase tracking-[0.4em] text-emerald-500 font-semibold mb-3">Step 3 of 3</p>
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Create a new password</h2>
-          <p className="text-gray-500 text-sm lg:text-base font-medium">
+          <p className="text-xs uppercase tracking-[0.4em] text-mint-50 font-semibold mb-3">Step 3 of 3</p>
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-15 mb-2">Create a new password</h2>
+          <p className="text-gray-30 text-sm lg:text-base font-medium">
             {email ? `You are resetting the password for ${maskedEmail}.` : "Redirecting..."}
           </p>
         </div>
@@ -123,7 +123,7 @@ const ResetPasswordForm = () => {
           )}
 
           <div>
-            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 ml-1">New Password</label>
+            <label className="block text-xs font-bold text-gray-15 uppercase tracking-wider mb-2 ml-1">New Password</label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -132,13 +132,13 @@ const ResetPasswordForm = () => {
                   onChange: () => clearErrors("root"),
                 })}
                 placeholder="Enter a strong password"
-                className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-100 transition-all duration-300 text-sm"
+                className="w-full px-4 py-3.5 bg-white-99 border border-white-90 rounded-xl outline-none focus:border-gray-30 focus:ring-4 focus:ring-white-95 transition-all duration-300 text-sm text-gray-15 placeholder:text-gray-40"
               />
               <button
                 type="button"
                 aria-label={showPassword ? "Hide password" : "Show password"}
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                className="absolute inset-y-0 right-3 flex items-center text-gray-40 hover:text-gray-30"
               >
                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
@@ -146,14 +146,14 @@ const ResetPasswordForm = () => {
             {errors.newPassword && (
               <p className="text-xs text-red-500 mt-1">{errors.newPassword.message}</p>
             )}
-            <ul className="mt-2 text-[11px] text-gray-500 space-y-1 ml-1">
+            <ul className="mt-2 text-[11px] text-gray-30 space-y-1 ml-1">
               <li>At least 8 characters</li>
               <li>Includes uppercase, lowercase, number, and symbol</li>
             </ul>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 ml-1">Confirm Password</label>
+            <label className="block text-xs font-bold text-gray-15 uppercase tracking-wider mb-2 ml-1">Confirm Password</label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -162,13 +162,13 @@ const ResetPasswordForm = () => {
                   onChange: () => clearErrors("root"),
                 })}
                 placeholder="Re-enter the password"
-                className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-100 transition-all duration-300 text-sm"
+                className="w-full px-4 py-3.5 bg-white-99 border border-white-90 rounded-xl outline-none focus:border-gray-30 focus:ring-4 focus:ring-white-95 transition-all duration-300 text-sm text-gray-15 placeholder:text-gray-40"
               />
               <button
                 type="button"
                 aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
                 onClick={() => setShowConfirmPassword((prev) => !prev)}
-                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                className="absolute inset-y-0 right-3 flex items-center text-gray-40 hover:text-gray-30"
               >
                 {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
@@ -179,7 +179,7 @@ const ResetPasswordForm = () => {
           </div>
 
           <button
-            className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-xl transition-all duration-300 text-sm shadow-lg shadow-emerald-100 cursor-pointer disabled:opacity-60"
+            className="w-full bg-mint-50 hover:bg-mint-75 text-white font-bold py-3.5 rounded-xl transition-all duration-300 text-sm shadow-[0_20px_45px_rgba(70,206,131,0.25)] cursor-pointer disabled:opacity-60"
             type="submit"
             disabled={isSubmitting}
           >
@@ -190,7 +190,7 @@ const ResetPasswordForm = () => {
         <div className="px-6 lg:px-16 pb-8 lg:pb-10">
           <button
             onClick={handleBackToLogin}
-            className="w-[40%] flex items-center justify-center gap-2 text-gray-600 hover:text-gray-800 font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 text-sm group cursor-pointer"
+            className="w-[40%] flex items-center justify-center gap-2 text-gray-30 hover:text-gray-15 font-semibold py-3 rounded-xl hover:bg-white-95 transition-all duration-300 text-sm group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
             <span>Back to login</span>

@@ -78,14 +78,14 @@ const VerifyOTPForm = () => {
     };
   
     return (
-      <div className="min-h-screen w-[100vw] bg-[#F3F4F6] flex items-center justify-center p-4 lg:p-8 font-sans">
-        <div className="w-full max-w-[560px] bg-white rounded-3xl lg:rounded-[40px] shadow-2xl overflow-hidden">
+      <div className="min-h-screen w-[100vw] bg-white-97 flex items-center justify-center p-4 lg:p-8 font-sans">
+        <div className="w-full max-w-[560px] bg-white-99 rounded-3xl lg:rounded-[40px] shadow-2xl overflow-hidden">
           {/* Header Section */}
           <div className="text-center pt-8 pb-6 px-6 lg:pt-10 lg:pb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-15 mb-2">
               Verify OTP Code
             </h2>
-            <p className="text-gray-500 text-sm lg:text-base font-medium">
+            <p className="text-gray-30 text-sm lg:text-base font-medium">
               {email ? `Enter the 6-digit code sent to ${email}.` : "Redirecting..."}
             </p>
           </div>
@@ -93,7 +93,7 @@ const VerifyOTPForm = () => {
           {/* Form Section */}
           <form onSubmit={handleSubmit(onSubmit)} className="px-6 lg:px-16 space-y-6">
             <div>
-              <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 ml-1">
+              <label className="block text-xs font-bold text-gray-15 uppercase tracking-wider mb-2 ml-1">
                 OTP Code
               </label>
               <input
@@ -108,14 +108,14 @@ const VerifyOTPForm = () => {
                   target.value = target.value.replace(/\D/g, '').slice(0, 6);
                 }}
                 placeholder="123456"
-                className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-100 transition-all duration-300 text-sm tracking-[0.6em] text-center"
+                className="w-full px-4 py-3.5 bg-white-99 border border-white-90 rounded-xl outline-none focus:border-gray-30 focus:ring-4 focus:ring-white-95 transition-all duration-300 text-sm tracking-[0.6em] text-center text-gray-15 placeholder:text-gray-40"
               />
             </div>
             {errors.otpCode && <p className="text-xs text-red-500 mt-1">{errors.otpCode.message}</p>}
             {errors.root && <p className="text-xs text-red-500 mt-1">{errors.root.message}</p>}
 
             <button
-              className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-xl transition-all duration-300 text-sm shadow-lg shadow-emerald-100 cursor-pointer"
+              className="w-full bg-mint-50 hover:bg-mint-75 text-white font-bold py-3.5 rounded-xl transition-all duration-300 text-sm shadow-[0_20px_45px_rgba(70,206,131,0.25)] cursor-pointer"
               type="submit"
               disabled={isSubmitting}
             >
@@ -127,7 +127,7 @@ const VerifyOTPForm = () => {
           <div className="px-6 lg:px-16 pt-6 pb-8 lg:pb-10">
             <button
               onClick={handleBackToLogin}
-              className="w-[30%] flex items-center justify-center gap-2 text-gray-600 hover:text-gray-800 font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 text-sm group cursor-pointer"
+              className="w-[30%] flex items-center justify-center gap-2 text-gray-30 hover:text-gray-15 font-semibold py-3 rounded-xl hover:bg-white-95 transition-all duration-300 text-sm group cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
               <span>Back to Login</span>
