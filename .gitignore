@@ -26,3 +26,7 @@ dist-ssr
 # Environment files
 .env
 .env.*
+
+src/app/(auth)/grammar/
+src/app/(auth)/topics/
+src/modules/topics/

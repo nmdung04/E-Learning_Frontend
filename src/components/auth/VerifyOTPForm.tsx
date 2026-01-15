@@ -2,25 +2,18 @@ import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { authService } from "@/modules/auth/auth.service";
 import { readResetFlowSession, updateResetFlowSession } from "@/modules/auth/resetFlowSession";
 import type { ResetFlowSession } from "@/modules/auth/resetFlowSession";
-
-const schema = z.object({
-  otpCode: z
-    .string()
-    .trim()
-    .regex(/^[0-9]{6}$/, "OTP code must contain exactly 6 digits"),
-});
-
-type FormFields = z.infer<typeof schema>;
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
+import { verifyOtpSchema, type VerifyOtpForm } from "@/validations/auth.schema";
 
 const VerifyOTPForm = () => {
-  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<FormFields>({
-      resolver: zodResolver(schema),
+  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<VerifyOtpForm>({
+      resolver: zodResolver(verifyOtpSchema),
       mode: 'onTouched',
     });
 
@@ -34,7 +27,7 @@ const VerifyOTPForm = () => {
       }
     }, [sessionState, navigate]);
   
-    const onSubmit = async (data: FormFields) => {
+    const onSubmit = async (data: VerifyOtpForm) => {
 
       if (!sessionState?.email) {
         setError('root', { message: 'Unable to find a valid reset request to verify.' });
@@ -62,7 +55,7 @@ const VerifyOTPForm = () => {
           const status = error.response.status;
           const message = error.response.data?.message as string | undefined;
           if (status === 400) {
-            setError('otpCode', { type: 'manual', message: message ?? 'OTP không hợp lệ hoặc đã hết hạn.' });
+            setError('otpCode', { type: 'manual', message: message ?? 'OTP is invalid or has expired.' });
           } else {
             setError('root', { message: message ?? 'The system is experiencing issues. Please try again later.' });
           }
@@ -92,46 +85,47 @@ const VerifyOTPForm = () => {
   
           {/* Form Section */}
           <form onSubmit={handleSubmit(onSubmit)} className="px-6 lg:px-16 space-y-6">
-            <div>
-              <label className="block text-xs font-bold text-gray-15 uppercase tracking-wider mb-2 ml-1">
-                OTP Code
-              </label>
-              <input
-                type="text"
-                inputMode="numeric"
-                autoComplete="one-time-code"
-                maxLength={6}
-                pattern="[0-9]{6}"
-                {...register('otpCode')}
-                onInput={(event) => {
-                  const target = event.currentTarget;
-                  target.value = target.value.replace(/\D/g, '').slice(0, 6);
-                }}
-                placeholder="123456"
-                className="w-full px-4 py-3.5 bg-white-99 border border-white-90 rounded-xl outline-none focus:border-gray-30 focus:ring-4 focus:ring-white-95 transition-all duration-300 text-sm tracking-[0.6em] text-center text-gray-15 placeholder:text-gray-40"
-              />
-            </div>
-            {errors.otpCode && <p className="text-xs text-red-500 mt-1">{errors.otpCode.message}</p>}
+            <Input
+              label="OTP Code"
+              type="text"
+              inputMode="numeric"
+              autoComplete="one-time-code"
+              maxLength={6}
+              pattern="[0-9]{6}"
+              placeholder="123456"
+              inputClassName="tracking-[0.6em] text-center"
+              {...register('otpCode')}
+              onInput={(event) => {
+                const target = event.currentTarget;
+                target.value = target.value.replace(/\D/g, '').slice(0, 6);
+              }}
+              error={errors.otpCode?.message}
+            />
             {errors.root && <p className="text-xs text-red-500 mt-1">{errors.root.message}</p>}
 
-            <button
-              className="w-full bg-mint-50 hover:bg-mint-75 text-white font-bold py-3.5 rounded-xl transition-all duration-300 text-sm shadow-[0_20px_45px_rgba(70,206,131,0.25)] cursor-pointer"
+            <Button
               type="submit"
+              variant="primary"
+              className="w-full py-3.5 rounded-xl shadow-[0_20px_45px_rgba(70,206,131,0.25)]"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Verifying...' : 'Confirm Code'}
-            </button>
+            </Button>
           </form>
   
           {/* Back to Login Section */}
           <div className="px-6 lg:px-16 pt-6 pb-8 lg:pb-10">
-            <button
-              onClick={handleBackToLogin}
-              className="w-[30%] flex items-center justify-center gap-2 text-gray-30 hover:text-gray-15 font-semibold py-3 rounded-xl hover:bg-white-95 transition-all duration-300 text-sm group cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
-              <span>Back to Login</span>
-            </button>
+            <div className="flex justify-start">
+              <Button
+                type="button"
+                variant="ghost"
+                className="flex items-center gap-2 font-semibold py-3 px-0 text-sm group"
+                onClick={handleBackToLogin}
+              >
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+                <span>Back to Login</span>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

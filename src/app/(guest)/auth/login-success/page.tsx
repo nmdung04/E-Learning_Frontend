@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { authService } from "@/modules/auth/auth.service";
 import { useAuth } from "@/modules/auth/useAuth";
+import { Button } from "@/components/ui/Button";
 
 const GoogleLoginSuccessPage = () => {
   const [searchParams] = useSearchParams();
@@ -53,12 +54,14 @@ const GoogleLoginSuccessPage = () => {
         <h1 className="text-2xl font-bold text-gray-15 mb-3">Google Sign In</h1>
         <p className="text-gray-30 text-sm leading-relaxed mb-6">{message}</p>
         {status === "error" && (
-          <button
+          <Button
+            type="button"
+            variant="primary"
+            className="w-full py-3 rounded-2xl"
             onClick={handleBackToLogin}
-            className="w-full bg-mint-50 text-white font-semibold py-3 rounded-2xl hover:bg-mint-75 transition-all cursor-pointer"
           >
             Back to Login
-          </button>
+          </Button>
         )}
         {status === "loading" && (
           <div className="flex items-center justify-center gap-2 text-gray-30 text-sm">

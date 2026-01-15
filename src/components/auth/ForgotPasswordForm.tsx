@@ -1,28 +1,24 @@
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { writeResetFlowSession } from "@/modules/auth/resetFlowSession";
 import { authService } from "@/modules/auth/auth.service";
-
-const schema = z.object({
-  email: z.string().min(1, 'Email is required').trim().email('Invalid email format'),
-});
-
-type FormFields = z.infer<typeof schema>;
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
+import {forgotPasswordSchema, type ForgotPasswordForm } from "@/validations/auth.schema";
 
 
 
 const ForgotPasswordForm = () => {
 
-  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<FormFields>({
-    resolver: zodResolver(schema),
+  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<ForgotPasswordForm>({
+    resolver: zodResolver(forgotPasswordSchema),
     mode: 'onTouched',
   });
 
-  const onSubmit = async (data: FormFields) => {
+  const onSubmit = async (data: ForgotPasswordForm) => {
     try {
       await authService.forgotPassword({ email: data.email });
 
@@ -35,12 +31,12 @@ const ForgotPasswordForm = () => {
         const status = error.response.status;
         const message = error.response.data?.message as string | undefined;
         if (status === 404) {
-          setError('email', { message: message ?? 'Email này không tồn tại trong hệ thống.' });
+          setError('email', { message: message ?? 'This email does not exist in our system.' });
         } else {
-          setError('root', { message: message ?? 'Hệ thống đang gặp sự cố. Vui lòng thử lại sau.' });
+          setError('root', { message: message ?? 'The system is experiencing issues. Please try again later.' });
         }
       } else {
-        setError('root', { message: 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra internet.' });
+        setError('root', { message: 'Unable to reach the server. Please check your internet connection.' });
       }
     }
   };
@@ -65,38 +61,36 @@ const ForgotPasswordForm = () => {
 
         {/* Form Section */}
         <form onSubmit={handleSubmit(onSubmit)} className="px-6 lg:px-16 space-y-6">
-          <div>
-            <label className="block text-xs font-bold text-gray-15 uppercase tracking-wider mb-2 ml-1">
-              Email
-            </label>
-            <input
-              type="email"
-              {...register('email')}
-              placeholder="Enter your Email"
-              className="w-full px-4 py-3.5 bg-white-99 border border-white-90 rounded-xl outline-none focus:border-gray-30 focus:ring-4 focus:ring-white-95 transition-all duration-300 text-sm text-gray-15 placeholder:text-gray-40"
-            />
-          </div>
-          {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>}
+          <Input
+            label="Email"
+            type="email"
+            placeholder="Enter your Email"
+            {...register('email')}
+            error={errors.email?.message}
+          />
           {errors.root && <p className="text-xs text-red-500 mt-1">{errors.root.message}</p>}
 
-          <button
-            className="w-full bg-mint-50 hover:bg-mint-75 text-white font-bold py-3.5 rounded-xl transition-all duration-300 text-sm shadow-[0_20px_45px_rgba(70,206,131,0.25)] cursor-pointer"
+          <Button
             type="submit"
+            variant="primary"
+            className="w-full py-3.5 rounded-xl shadow-[0_20px_45px_rgba(70,206,131,0.25)]"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Sending...' : 'Send Verification Code'}
-          </button>
+          </Button>
         </form>
 
         {/* Back to Login Section */}
         <div className="px-6 lg:px-16 pt-6 pb-8 lg:pb-10">
-          <button
-            onClick={handleBackToLogin}
-            className="w-[30%] flex items-center justify-center gap-2 text-gray-30 hover:text-gray-15 font-semibold py-3 rounded-xl hover:bg-white-95 transition-all duration-300 text-sm group cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
-            <span>Back to Login</span>
-          </button>
+            <Button
+              type="button"
+              variant="ghost"
+              className="flex items-center gap-2 font-semibold py-3 px-0 text-sm group"
+              onClick={handleBackToLogin}
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+              <span>Back to Login</span>
+            </Button>
         </div>
       </div>
     </div>

@@ -1,30 +1,13 @@
-import { Eye, EyeOff } from 'lucide-react';
-import { useState } from 'react';
 import AuthBanner from './AuthBanner';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useAuth } from '@/modules/auth/useAuth';
+import { Input, PasswordInput } from '@/components/ui/Input';
+import { Button } from '@/components/ui/Button';
+import { loginSchema, type LoginForm } from '@/validations/auth.schema';
 
-const schema = z.object({
-  email: z
-    .string()
-    .min(1, { message: 'Email is required' }) 
-    .trim() 
-    .toLowerCase(),
-  
-  password: z
-    .string()
-    .min(1, { message: 'Password is required' }),
-  
-  rememberMe: z.boolean().optional(),
-
-  
-});
-
-type FormFields = z.infer<typeof schema>;
 
 const SignIn = () => {
   const savedEmail = localStorage.getItem('rememberedEmail');
@@ -32,8 +15,8 @@ const SignIn = () => {
   const location = useLocation();
   const { login, authenticating } = useAuth();
 
-  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<FormFields>({
-    resolver: zodResolver(schema),
+  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<LoginForm>({
+    resolver: zodResolver(loginSchema),
     mode: 'onTouched',
     defaultValues: {
       email: savedEmail || '',
@@ -41,7 +24,6 @@ const SignIn = () => {
     }
   });
 
-  const [showPassword, setShowPassword] = useState(false);
   const googleAuthUrl = (import.meta.env.VITE_API_BASE_URL ?? '/api') + '/auth/google';
   const handleGoogleSignIn = () => {
     window.location.href = googleAuthUrl;
@@ -62,7 +44,7 @@ const SignIn = () => {
     return 'Unable to sign in. Please try again later.';
   };
 
-  const onSubmit: SubmitHandler<FormFields> = async data => {
+  const onSubmit: SubmitHandler<LoginForm> = async data => {
     try {
       await login({ email: data.email, password: data.password });
       if (data.rememberMe) {
@@ -94,39 +76,21 @@ const SignIn = () => {
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-gray-15 uppercase tracking-wider ml-1">Email</label>
-                <input
-                  {...register('email')}
-                  type="text" name="email"
-                  placeholder="Enter your Email"
-                  className="w-full px-4 py-3.5 bg-white-99 border border-white-90 rounded-xl focus:bg-white focus:ring-4 focus:ring-white-95 focus:border-gray-30 outline-none transition-all text-sm text-gray-15 placeholder:text-gray-40"
-                />
-                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
-              </div>
+              <Input
+                label="Email"
+                placeholder="Enter your Email"
+                {...register('email')}
+                error={errors.email?.message}
+              />
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-gray-15 uppercase tracking-wider ml-1">Password</label>
-                <div className="relative">
-                  <input
-                    {...register('password')}
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Enter your Password"
-                    className="w-full px-4 py-3.5 bg-white-99 border border-white-90 rounded-xl focus:bg-white focus:ring-4 focus:ring-white-95 focus:border-gray-30 outline-none transition-all text-sm text-gray-15 placeholder:text-gray-40"
-                  />
-                  
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 text-gray-40 hover:text-gray-30 transition-colors"
-                  >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </button>
-                </div>
-                {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
-              </div>
+              <PasswordInput
+                label="Password"
+                placeholder="Enter your Password"
+                {...register('password')}
+                error={errors.password?.message}
+                revealLabel="Show password"
+                hideLabel="Hide password"
+              />
 
               <div className="flex items-center justify-between text-sm">
               <label className="flex items-center gap-2 cursor-pointer group">
@@ -144,9 +108,14 @@ const SignIn = () => {
 
               {errors.root && <p className="text-red-500 text-xs mt-1 text-start">{errors.root.message}</p>}
 
-              <button disabled={isSubmitting || authenticating} className="w-full bg-mint-50 hover:bg-mint-75 text-white font-bold py-4 rounded-xl shadow-[0_20px_45px_rgba(70,206,131,0.25)] transition-all transform active:scale-[0.98] mt-2 cursor-pointer disabled:opacity-60" type="submit">
+              <Button
+                type="submit"
+                variant="primary"
+                className="w-full py-4 rounded-xl shadow-[0_20px_45px_rgba(70,206,131,0.25)] mt-2"
+                disabled={isSubmitting || authenticating}
+              >
                 {isSubmitting || authenticating ? 'Signing In...' : 'Sign In'}
-              </button>
+              </Button>
               
 
               <div className="relative py-4">
@@ -154,7 +123,12 @@ const SignIn = () => {
                 <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest"><span className="bg-white-99 px-3 text-gray-40">OR</span></div>
               </div>
 
-              <button type="button" onClick={handleGoogleSignIn} className="w-full flex items-center justify-center gap-3 bg-white-99 hover:bg-white-95 border border-white-90 text-gray-15 font-bold py-3.5 rounded-xl transition-all text-sm cursor-pointer">
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-3 border-white-90 py-3.5 rounded-xl text-sm"
+                onClick={handleGoogleSignIn}
+              >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -162,7 +136,7 @@ const SignIn = () => {
                   <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                 </svg>
                 Sign In with Google
-              </button>
+              </Button>
             </form>
 
             <p className="text-center mt-8 text-sm text-gray-30">

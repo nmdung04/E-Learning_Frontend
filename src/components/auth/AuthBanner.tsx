@@ -7,52 +7,52 @@ const testimonials = [
   {
     id: 1,
     name: "Linh Tran",
-    role: "IELTS 6.0 to 7.5 · Intensive Sprint",
-    text: "The speaking studio and AI pronunciation coach finally made me comfortable pitching in English.",
-    fullStory: "Before joining E-Learning English I memorized scripts and still froze in meetings. The coaches diagnosed my weak vowel sounds, gave me daily WhatsApp drills, and paired me with a study partner who kept me accountable through every live class.",
+    role: "TOEIC Speaking from 120 to 160 · Intensive Sprint",
+    text: "Role-play labs mirrored the TOEIC Speaking prompts, so I stopped freezing and hit the timing cues naturally.",
+    fullStory: "I used to memorize scripts and still blank out on Part 4. The coaches drilled intonation with timed recordings, the AI coach flagged filler words, and a study buddy kept me accountable for daily speaking clips. By week 7 I could deliver responses within 45 seconds without rushing.",
     milestones: [
-      "Recorded 40 speaking clips reviewed by native mentors",
-      "Closed two cross-border sales calls without switching to Vietnamese",
-      "Booked the official IELTS exam with confidence after week 8"
+      "Recorded 40 timed TOEIC Speaking clips with mentor notes",
+      "Raised speaking score from 120 to 160 in 7 weeks",
+      "Handled client updates in English without slipping to Vietnamese"
     ],
     avatar: "/images/auth/Sarah.jpg"
   },
   {
     id: 2,
     name: "Minh Nguyen",
-    role: "Business English · Evening Cohort",
-    text: "Daily micro-lessons inside the LMS fit between client calls and still improved my writing score by 2 bands.",
-    fullStory: "E-Learning English mapped a curriculum to my fintech job. I practiced replying to tough stakeholder emails, rewrote product updates with mentor feedback, and used the browser extension to collect vocabulary straight into the platform glossary.",
+    role: "TOEIC L&R from 550 to 750 · Evening Cohort",
+    text: "Micro-lessons fit between client calls and lifted my Listening/Reading score by 200 points.",
+    fullStory: "The curriculum matched my fintech workflows: parsing support tickets, summarizing specs, and scanning long emails for key actions—just like TOEIC parts 3, 4, 6, and 7. Mentor feedback on written summaries sharpened my grammar, and the glossary extension pushed collocations into my review deck.",
     milestones: [
-      "Graduated from B1 to solid B2 in 12 weeks",
-      "Delivered monthly reports to the Singapore office in English",
-      "Maintained a 21-day streak thanks to calendar reminders"
+      "Listening score jumped from 295 to 375",
+      "Reading score climbed from 255 to 375",
+      "Maintained a 21-day streak with calendar nudges"
     ],
     avatar: "/images/auth/Emily.jpg"
   },
   {
     id: 3,
     name: "Nam Pham",
-    role: "TOEIC Upgrade · Weekend Track",
-    text: "Listening labs that mirror real customer support calls helped me jump 250 points in six weeks.",
-    fullStory: "My company reimburses TOEIC classes only if we hit 800. The E-Learning English dashboard showed me which parts I kept missing, and the podcast-style exercises plus auto-graded quizzes made commuting hours productive instead of wasted time.",
+    role: "TOEIC 550 to 805 · Weekend Track",
+    text: "Listening labs mirrored customer-support calls and pushed me over the 800 threshold in six weeks.",
+    fullStory: "Company reimbursement kicks in at 800. The dashboard showed weak question types (negative questions, double-passages), and podcast-style drills matched TOEIC audio speed. Auto-graded quizzes on the bus turned dead time into practice, and I learned to spot traps faster.",
     milestones: [
-      "Improved listening score from 320 to 555",
-      "Completed every weekend live review without missing a session",
-      "Earned the internal stipend and got promoted to shift lead"
+      "Listening score from 320 to 440; Reading from 230 to 365",
+      "Completed every weekend live review",
+      "Earned the stipend and got promoted to shift lead"
     ],
     avatar: "/images/auth/Nam.jpg"
   },
   {
     id: 4,
     name: "Peter Dang",
-    role: "Corporate Fluency · Custom Plan",
-    text: "Our HR team rolled out the platform and my entire squad now collaborates in English during sprint reviews.",
-    fullStory: "We uploaded our engineering glossary into E-Learning English, then mentors built role-play scenarios for stand-ups, demos, and incident calls. The AI coach flagged filler words and gave me replacement phrases that sounded natural.",
+    role: "TOEIC Readiness for Engineering · Custom Plan",
+    text: "We aligned TOEIC prep with sprint rituals, so the team practiced English and scored higher together.",
+    fullStory: "We uploaded our engineering glossary, then mentors turned sprint reviews and incident calls into TOEIC-style listening/reading tasks. The AI coach highlighted vague phrasing and suggested concise alternatives. HR tracked progress by part, and the squad built confidence for both the test and daily stand-ups.",
     milestones: [
       "Hosted two sprint reviews fully in English",
       "Cut translation time from 3 hours to 40 minutes weekly",
-      "Onboarded three new teammates using the same curriculum"
+      "Team average TOEIC score up by 180 points"
     ],
     avatar: "/images/auth/Peter.jpg"
   }
