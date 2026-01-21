@@ -60,15 +60,13 @@ export default function Recorder({ wordId }: RecorderProps) {
 
   return (
     <div className="recorder">
-      {/* 🎤 / ⏹ */}
       <button
         className={`mic-btn ${recording ? "recording" : ""}`}
         onClick={recording ? stopRecord : startRecord}
       >
         {recording ? "⏹" : "🎤"}
       </button>
-
-      {/* 🔊 / ⏸ */}
+      
       <button
         className="play-record-btn"
         onClick={togglePlay}

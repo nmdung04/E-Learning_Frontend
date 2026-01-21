@@ -16,7 +16,6 @@ export default function VocabSection({ words }: { words: SpeakingWord[] }) {
   const handlePlay = (word: SpeakingWord) => {
     if (!audioRef.current) return
 
-    // click lại chính nó → pause
     if (playingId === word.id) {
       audioRef.current.pause()
       setPlayingId(null)
@@ -30,7 +29,6 @@ export default function VocabSection({ words }: { words: SpeakingWord[] }) {
 
   return (
     <div className="vocab-section">
-      {/* audio chung cho toàn page */}
       <audio
         ref={audioRef}
         onEnded={() => setPlayingId(null)}
@@ -45,7 +43,6 @@ export default function VocabSection({ words }: { words: SpeakingWord[] }) {
             </div>
 
             <div className="actions">
-              {/* ▶ / ⏸ phát audio gốc */}
               <button
                 className="play-btn"
                 onClick={() => handlePlay(w)}
@@ -53,7 +50,6 @@ export default function VocabSection({ words }: { words: SpeakingWord[] }) {
                 {playingId === w.id ? "⏸" : "▶"}
               </button>
 
-              {/* 🎤 + 🔊 nằm trong Recorder, nhận wordId */}
               <Recorder wordId={w.id} />
             </div>
           </li>

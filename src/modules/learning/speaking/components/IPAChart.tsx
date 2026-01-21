@@ -1,5 +1,3 @@
-// src/modules/learning/speaking/components/IPAChart.tsx
-
 import { useState } from "react";
 import { IPA_VOWELS, IPA_CONSONANTS, IpaSymbol } from "../data/ipa";
 

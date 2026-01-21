@@ -1,4 +1,3 @@
-/* ===== PAGE ===== */
 .speaking-page {
   padding: 20px;
 }
@@ -15,7 +14,6 @@
   font-weight: 600;
 }
 
-/* ===== TABS ===== */
 .tabs {
   display: flex;
   gap: 8px;
@@ -40,7 +38,6 @@
   margin-top: 12px;
 }
 
-/* ===== WORD LIST ===== */
 .word-list {
   margin-top: 24px;
 }
@@ -59,7 +56,6 @@
   margin-bottom: 10px;
 }
 
-/* ===== WORD INFO ===== */
 .word-info strong {
   font-size: 18px;
 }
@@ -75,14 +71,12 @@
   color: #444;
 }
 
-/* ===== ACTIONS ===== */
 .actions {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Recorder nằm ngang */
 .recorder {
   display: flex;
   align-items: center;
@@ -90,7 +84,6 @@
   margin: 0;
 }
 
-/* ===== BUTTONS (PLAY / MIC / PLAY RECORD) ===== */
 .play-btn,
 .mic-btn,
 .play-record-btn {
@@ -110,22 +103,21 @@
   font-size: 18px;
   line-height: 1;
 
-  padding: 0; /* 🔥 FIX LỆCH */
+  padding: 0; 
   cursor: pointer;
 }
 
-/* Disabled play record */
 .play-record-btn:disabled {
   background: #c7c7c7;
   cursor: not-allowed;
 }
 
-/* Recording state */
+
 .mic-btn.recording {
   background: #ff4d4f;
 }
 
-/* ===== PAGINATION ===== */
+
 .pagination {
   display: flex;
   align-items: center;
