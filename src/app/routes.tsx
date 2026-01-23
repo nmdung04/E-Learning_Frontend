@@ -14,6 +14,9 @@ import RequireAuth from "@/modules/auth/RequireAuth";
 import AppLayout from "./AppLayout";
 import AuthLayout from "./AuthLayout";
 import SpeakingLearningPage from "@/modules/learning/speaking/page";
+import TopicListPage from "@/modules/learning/vocab/pages/TopicListPage";
+import StudyPage from "@/modules/learning/vocab/pages/StudyPage";
+import ReviewPage from "@/modules/learning/vocab/pages/ReviewPage";
 
 const HomeRedirect = () => {
   const { isAuthenticated } = useAuth();
@@ -40,6 +43,31 @@ const AppRoutes = () => {
             element={
               <RequireAuth>
                 <DashboardPage />
+              </RequireAuth>
+            }
+          />
+          {/* Vocabulary routes */}
+          <Route
+            path="/vocab/topics"
+            element={
+              <RequireAuth>
+                <TopicListPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/vocab/study"
+            element={
+              <RequireAuth>
+                <StudyPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/vocab/review"
+            element={
+              <RequireAuth>
+                <ReviewPage />
               </RequireAuth>
             }
           />

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { IPA_VOWELS, IPA_CONSONANTS, IpaSymbol } from "../data/ipa";
+import { IPA_VOWELS, IPA_CONSONANTS } from "../data/ipa";
+import type { IpaSymbol } from "../data/ipa";
 
 export default function IPAChart() {
   const [playing, setPlaying] = useState<string | null>(null);
