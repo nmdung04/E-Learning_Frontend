@@ -1,94 +1,89 @@
-import axios, { AxiosHeaders } from "axios";
-import { readAccessToken } from "@/services/auth/tokenStorage";
+import { authService } from "@/services/auth/auth.service";
+import type { ApiMessageResponse } from "@/services/auth/auth.types";
 
-export type TopicSummary = {
+export type TopicProgress = {
   name: string;
   totalWords: number;
   learnedCount: number;
-  progressPercentage: number;
+  progressPercentage?: number;
 };
 
 export type VocabEntry = {
-  word_vi?: string;
-  definition_vi?: string;
-  definition_en?: string;
-  phonetic?: string;
-  audio?: string;
-  example?: string;
-  class?: string;
-  cefr?: string;
-};
-
-export type WordItem = {
   word: string;
-  wordKey: string;
   topics?: string[];
-  entries?: VocabEntry[];
+  entries?: Array<{
+    word_vi?: string;
+    definition_vi?: string;
+    definition_en?: string;
+    phonetic?: string;
+    audio?: string;
+    example?: string;
+    class?: string;
+    cefr?: string;
+  }>;
+  wordKey?: string;
 };
 
-export type ReviewItem = {
-  id: number;
-  userId?: number;
-  wordKey: string;
-  easeFactor?: number;
-  interval?: number;
-  repetition?: number;
-  nextReview?: string;
-  lastReview?: string;
-  wrongCount?: number;
-  status?: number;
-  detail?: {
-    word?: string;
-    topics?: string[];
-  };
-  entries?: VocabEntry[];
-};
-
-const client = axios.create({
-  baseURL: "/api",
-  timeout: 15000,
-});
-
-client.interceptors.request.use((config) => {
-  const token = readAccessToken();
-  if (token) {
-    if (config.headers instanceof AxiosHeaders) {
-      config.headers.set("Authorization", `Bearer ${token}`);
-    } else if (config.headers) {
-      const merged = { ...Object(config.headers), Authorization: `Bearer ${token}` };
-      config.headers = new AxiosHeaders(merged);
-    } else {
-      config.headers = new AxiosHeaders({ Authorization: `Bearer ${token}` });
-    }
-  }
-  return config;
-});
-
-const get = async <T>(url: string, params?: Record<string, unknown>): Promise<T> => {
-  const { data } = await client.get(url, { params });
-  // APIs return { statusCode, message, data }; normalize to data
-  return (data?.data ?? data) as T;
-};
-
-const post = async <T>(url: string, body: unknown): Promise<T> => {
-  const { data } = await client.post(url, body);
-  return (data?.data ?? data) as T;
+const unwrap = <T>(payload: unknown): T | null => {
+  if (!payload || typeof payload !== "object") return null;
+  const bucket = payload as Record<string, unknown>;
+  return (
+    (bucket.result as T | undefined) ??
+    (bucket.data as T | undefined) ??
+    (bucket as unknown as T) ??
+    null
+  );
 };
 
 export const vocabService = {
-  async getTopics(): Promise<TopicSummary[]> {
-    return get<TopicSummary[]>("/vocabs/topics");
+  async getTopics(): Promise<TopicProgress[]> {
+    const client = authService.getHttpClient();
+    const res = await client.get<ApiMessageResponse>("/vocabs/topics");
+    return unwrap<TopicProgress[]>(res.data) ?? [];
   },
-
-  async getNewWords(params: { topic?: string; level?: string; limit?: number }): Promise<WordItem[]> {
-    return get<WordItem[]>("/vocabs/new-words", params);
+  async getNewWords(params: { topic: string; level?: string; limit?: number }): Promise<VocabEntry[]> {
+    const client = authService.getHttpClient();
+    const res = await client.get<ApiMessageResponse>("/vocabs/new-words", {
+      params: { topic: params.topic, level: params.level, limit: params.limit ?? 10 },
+    });
+    const data = unwrap<VocabEntry | VocabEntry[]>(res.data);
+    if (!data) return [];
+    return Array.isArray(data) ? data : [data];
   },
-
-  async getReviewDeck(params: { topic?: string }): Promise<ReviewItem[]> {
-    return get<ReviewItem[]>("/vocabs/review-deck", params);
+  async getReviewDeck(topic?: string): Promise<VocabEntry[]> {
+    const client = authService.getHttpClient();
+    const res = await client.get<ApiMessageResponse>("/vocabs/review-deck", {
+      params: topic ? { topic } : undefined,
+    });
+    const raw = unwrap<unknown>(res.data);
+    if (!raw) return [];
+    const src = Array.isArray(raw) ? raw : [raw];
+    return src.map((item) => {
+      const obj = item as Record<string, unknown>;
+      const detail = (obj.detail as Record<string, unknown> | undefined) ?? {};
+      const entries =
+        (obj.entries as Array<Record<string, unknown>> | undefined) ??
+        (detail.entries as Array<Record<string, unknown>> | undefined) ??
+        [];
+      const topics =
+        (obj.topics as string[] | undefined) ??
+        (detail.topics as string[] | undefined) ??
+        [];
+      const word =
+        (obj.word as string | undefined) ??
+        (detail.word as string | undefined) ??
+        "";
+      const wordKey =
+        (obj.wordKey as string | undefined) ??
+        word ??
+        (detail.wordKey as string | undefined);
+      return { word, wordKey, topics, entries };
+    });
   },
-
   async submitAnswer(payload: { wordKey: string; quality: number }) {
-    return post<ReviewItem>("/vocabs/answer", payload);
+    const client = authService.getHttpClient();
+    const res = await client.post<ApiMessageResponse>("/vocabs/answer", payload);
+    return unwrap<Record<string, unknown>>(res.data);
   },
 };
+

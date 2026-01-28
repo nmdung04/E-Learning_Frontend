@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import type { SpeakingWord } from "../data/words.mock"
+import { type SpeakingWord } from "../data/words.mock"
 import Recorder from "./Recorder"
 
 const PAGE_SIZE = 10
