@@ -11,6 +11,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --red-500: #fb2c36;
+  --red-600: #e7000b;
+  --yellow-500: #f0b100;
+  --yellow-600: #eab308;
+  --orange-500: #f97316;
+  --orange-600: #d9534f;
 }
 
 @import 'tailwindcss';
@@ -95,7 +102,24 @@ body {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
-
+.bg-red-500 {
+  background-color: var(--red-500);
+}
+.bg-red-600 {
+  background-color: var(--red-600);
+}
+.bg-yellow-500 {
+  background-color: var(--yellow-500);
+}
+.bg-yellow-600 {
+  background-color: var(--yellow-600);
+}
+.bg-orange-500 {
+  background-color: var(--orange-500);
+}
+.bg-orange-600 {
+  background-color: var(--orange-600);
+}
 button {
   cursor: pointer;
 }

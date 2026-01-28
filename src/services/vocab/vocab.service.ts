@@ -39,7 +39,6 @@ export const vocabService = {
   async getTopics(): Promise<TopicProgress[]> {
     const client = authService.getHttpClient();
     const res = await client.get<ApiMessageResponse>("/vocabs/topics");
-    console.log(res.data);
     return unwrap<TopicProgress[]>(res.data) ?? [];
   },
   async getNewWords(params: { topic: string; level?: string; limit?: number }): Promise<VocabEntry[]> {
@@ -56,8 +55,30 @@ export const vocabService = {
     const res = await client.get<ApiMessageResponse>("/vocabs/review-deck", {
       params: topic ? { topic } : undefined,
     });
-    const data = unwrap<VocabEntry[]>(res.data);
-    return data ?? [];
+    const raw = unwrap<unknown>(res.data);
+    if (!raw) return [];
+    const src = Array.isArray(raw) ? raw : [raw];
+    return src.map((item) => {
+      const obj = item as Record<string, unknown>;
+      const detail = (obj.detail as Record<string, unknown> | undefined) ?? {};
+      const entries =
+        (obj.entries as Array<Record<string, unknown>> | undefined) ??
+        (detail.entries as Array<Record<string, unknown>> | undefined) ??
+        [];
+      const topics =
+        (obj.topics as string[] | undefined) ??
+        (detail.topics as string[] | undefined) ??
+        [];
+      const word =
+        (obj.word as string | undefined) ??
+        (detail.word as string | undefined) ??
+        "";
+      const wordKey =
+        (obj.wordKey as string | undefined) ??
+        word ??
+        (detail.wordKey as string | undefined);
+      return { word, wordKey, topics, entries };
+    });
   },
   async submitAnswer(payload: { wordKey: string; quality: number }) {
     const client = authService.getHttpClient();
