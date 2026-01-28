@@ -7,18 +7,18 @@ import { writeResetFlowSession } from "@/services/auth/resetFlowSession";
 import { authService } from "@/services/auth/auth.service";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { forgotPasswordSchema, type ForgotPasswordForm } from "@/validations/auth.schema";
+import { forgotPasswordSchema, type ForgotPasswordForm as ForgotPasswordFormType } from "@/validations/auth.schema";
 
 
 
 const ForgotPasswordForm = () => {
 
-  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<ForgotPasswordForm>({
+  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<ForgotPasswordFormType>({
     resolver: zodResolver(forgotPasswordSchema),
     mode: 'onTouched',
   });
 
-  const onSubmit = async (data: ForgotPasswordForm) => {
+  const onSubmit = async (data: ForgotPasswordFormType) => {
     try {
       await authService.forgotPassword({ email: data.email });
 
