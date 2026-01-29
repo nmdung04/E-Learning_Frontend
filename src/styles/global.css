@@ -3,9 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: light;
+  color: #262626;
+  background-color: #f7f7f8;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,6 +27,20 @@
   --color-mint-70: #89dc7e;
   --color-mint-75: #1ea34d; /* deeper accent for auth CTA */
   --color-mint-80: #d8ff99;
+
+  /* design tokens */
+  --color-primary: var(--color-mint-50);
+  --color-primary-5: color-mix(in srgb, var(--color-primary) 5%, transparent);
+  --color-primary-10: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  --color-secondary: var(--color-white-95);
+  --color-background: var(--color-white-97);
+  --color-border: var(--color-white-90);
+  --color-text-main: var(--color-gray-15);
+  --color-text-muted: var(--color-gray-40);
+  --color-success: var(--color-mint-75);
+  --color-success-10: color-mix(in srgb, var(--color-success) 10%, transparent);
+  --color-locked: var(--color-gray-50);
+  --color-locked-10: color-mix(in srgb, var(--color-locked) 10%, transparent);
 
   --color-white-90: #e4e4e7;
   --color-white-95: #f1f1f3; /* secondary color */
@@ -122,4 +136,93 @@ body {
 }
 button {
   cursor: pointer;
+}
+
+/* Utility tokens aligned with Tailwind-like class names */
+.bg-background {
+  background-color: var(--color-background);
+}
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+.bg-primary {
+  background-color: var(--color-primary);
+}
+.bg-primary\/5 {
+  background-color: var(--color-primary-5);
+}
+.bg-primary\/10 {
+  background-color: var(--color-primary-10);
+}
+.bg-success\/10 {
+  background-color: var(--color-success-10);
+}
+.bg-locked\/10 {
+  background-color: var(--color-locked-10);
+}
+
+.text-text-main {
+  color: var(--color-text-main);
+}
+.text-text-muted {
+  color: var(--color-text-muted);
+}
+.text-primary {
+  color: var(--color-primary);
+}
+.text-success {
+  color: var(--color-success);
+}
+.text-locked {
+  color: var(--color-locked);
+}
+
+.border-border {
+  border-color: var(--color-border);
+}
+
+/* Custom animations for lesson completion */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-scale-up {
+  animation: scale-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
 }
