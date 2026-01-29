@@ -27,6 +27,20 @@
   --color-mint-75: #1ea34d; /* deeper accent for auth CTA */
   --color-mint-80: #d8ff99;
 
+  /* design tokens */
+  --color-primary: var(--color-mint-50);
+  --color-primary-5: color-mix(in srgb, var(--color-primary) 5%, transparent);
+  --color-primary-10: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  --color-secondary: var(--color-white-95);
+  --color-background: var(--color-white-97);
+  --color-border: var(--color-white-90);
+  --color-text-main: var(--color-gray-15);
+  --color-text-muted: var(--color-gray-40);
+  --color-success: var(--color-mint-75);
+  --color-success-10: color-mix(in srgb, var(--color-success) 10%, transparent);
+  --color-locked: var(--color-gray-50);
+  --color-locked-10: color-mix(in srgb, var(--color-locked) 10%, transparent);
+
   --color-white-90: #e4e4e7;
   --color-white-95: #f1f1f3; /* secondary color */
   --color-white-97: #f7f7f8; /* body background color */
