@@ -13,9 +13,15 @@ import { UserProfilePage } from "@/modules/user/UserProfilePage";
 import RequireAuth from "@/modules/auth/RequireAuth";
 import AppLayout from "./AppLayout";
 import AuthLayout from "./AuthLayout";
+<<<<<<< HEAD
 import VocabularyPractice from '@/modules/learning/vocabulary/page'
 import VocabularyTopicsPage from '@/modules/learning/vocabulary/TopicsPage'
 import NewWordsPage from '@/modules/learning/vocabulary/new-words/page'
+=======
+import TopicListPage from "@/modules/learning/vocab/pages/TopicListPage";
+import StudyPage from "@/modules/learning/vocab/pages/StudyPage";
+import ReviewPage from "@/modules/learning/vocab/pages/ReviewPage";
+>>>>>>> 76e527392ff5f21b504412977a11789ab1813d9a
 import SpeakingLearningPage from "@/modules/learning/speaking/page";
 
 const AppRoutes = () => {
@@ -65,26 +71,47 @@ const AppRoutes = () => {
             }
           />
           <Route
+<<<<<<< HEAD
             path="/vocabulary/:lessonId"
             element={
               <RequireAuth>
                 <VocabularyPractice />
+=======
+            path="/vocab"
+            element={
+              <RequireAuth>
+                <TopicListPage />
+>>>>>>> 76e527392ff5f21b504412977a11789ab1813d9a
               </RequireAuth>
             }
           />
           <Route
+<<<<<<< HEAD
             path="/vocabulary"
             element={
               <RequireAuth>
                 <VocabularyTopicsPage />
+=======
+            path="/vocab/review"
+            element={
+              <RequireAuth>
+                <ReviewPage />
+>>>>>>> 76e527392ff5f21b504412977a11789ab1813d9a
               </RequireAuth>
             }
           />
           <Route
+<<<<<<< HEAD
             path="/vocabulary/new-words/:topic"
             element={
               <RequireAuth>
                 <NewWordsPage />
+=======
+            path="/vocab/:topic"
+            element={
+              <RequireAuth>
+                <StudyPage />
+>>>>>>> 76e527392ff5f21b504412977a11789ab1813d9a
               </RequireAuth>
             }
           />
