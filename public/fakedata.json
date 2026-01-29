@@ -1,0 +1,71 @@
+{
+  "topics": [
+    {
+      "id": "business-english",
+      "name": "Business English",
+      "level": "Intermediate",
+      "words": [
+        { "id": "be-1", "termEn": "meeting", "pos": "noun", "phonetic": "/ˈmiːtɪŋ/", "audioUrl": "", "definitionEn": "A gathering of people for discussion.", "meaningVi": "cuộc họp", "examples": ["We have a meeting at 9 AM.", "The team meeting lasted two hours."] },
+        { "id": "be-2", "termEn": "deadline", "pos": "noun", "phonetic": "/ˈdɛdˌlaɪn/", "audioUrl": "", "definitionEn": "The latest time for completion.", "meaningVi": "hạn chót", "examples": ["The deadline is next Friday.", "We must meet the deadline."] },
+        { "id": "be-3", "termEn": "negotiate", "pos": "verb", "phonetic": "/nɪˈɡoʊʃiˌeɪt/", "audioUrl": "", "definitionEn": "Discuss to reach agreement.", "meaningVi": "đàm phán", "examples": ["They negotiated a better price.", "We should negotiate terms."] },
+        { "id": "be-4", "termEn": "proposal", "pos": "noun", "phonetic": "/prəˈpoʊzəl/", "audioUrl": "", "definitionEn": "A plan or suggestion.", "meaningVi": "đề xuất", "examples": ["The proposal was approved.", "Please review the proposal."] },
+        { "id": "be-5", "termEn": "budget", "pos": "noun", "phonetic": "/ˈbʌdʒɪt/", "audioUrl": "", "definitionEn": "Estimated income and expenses.", "meaningVi": "ngân sách", "examples": ["Our budget increased this year.", "Keep within the budget."] },
+        { "id": "be-6", "termEn": "contract", "pos": "noun", "phonetic": "/ˈkɑːntrækt/", "audioUrl": "", "definitionEn": "A legal agreement.", "meaningVi": "hợp đồng", "examples": ["We signed the contract.", "The contract is valid."] },
+        { "id": "be-7", "termEn": "client", "pos": "noun", "phonetic": "/ˈklaɪənt/", "audioUrl": "", "definitionEn": "A customer of services.", "meaningVi": "khách hàng", "examples": ["The client is satisfied.", "Meet the client's needs."] },
+        { "id": "be-8", "termEn": "invoice", "pos": "noun", "phonetic": "/ˈɪnvɔɪs/", "audioUrl": "", "definitionEn": "A bill for goods or services.", "meaningVi": "hóa đơn", "examples": ["We sent the invoice.", "Pay the invoice promptly."] },
+        { "id": "be-9", "termEn": "feedback", "pos": "noun", "phonetic": "/ˈfiːdbæk/", "audioUrl": "", "definitionEn": "Information on performance.", "meaningVi": "phản hồi", "examples": ["Client feedback was positive.", "Give constructive feedback."] },
+        { "id": "be-10", "termEn": "strategy", "pos": "noun", "phonetic": "/ˈstrætəˌdʒi/", "audioUrl": "", "definitionEn": "A plan of action.", "meaningVi": "chiến lược", "examples": ["Our strategy focuses on growth.", "Develop a strong strategy."] },
+        { "id": "be-11", "termEn": "agenda", "pos": "noun", "phonetic": "/əˈdʒɛndə/", "audioUrl": "", "definitionEn": "Items to be discussed.", "meaningVi": "chương trình họp", "examples": ["What's on the agenda?", "Follow the meeting agenda."] },
+        { "id": "be-12", "termEn": "report", "pos": "noun", "phonetic": "/rɪˈpɔːrt/", "audioUrl": "", "definitionEn": "An account of events.", "meaningVi": "báo cáo", "examples": ["Submit the report.", "Read the monthly report."] },
+        { "id": "be-13", "termEn": "target", "pos": "noun", "phonetic": "/ˈtɑːrɡɪt/", "audioUrl": "", "definitionEn": "A goal to achieve.", "meaningVi": "mục tiêu", "examples": ["Sales targets were met.", "Set clear targets."] },
+        { "id": "be-14", "termEn": "policy", "pos": "noun", "phonetic": "/ˈpɑːləsi/", "audioUrl": "", "definitionEn": "A course of action.", "meaningVi": "chính sách", "examples": ["Company policy updated.", "Follow the policy."] },
+        { "id": "be-15", "termEn": "risk", "pos": "noun", "phonetic": "/rɪsk/", "audioUrl": "", "definitionEn": "Possibility of loss.", "meaningVi": "rủi ro", "examples": ["Reduce business risk.", "Assess potential risks."] },
+        { "id": "be-16", "termEn": "stakeholder", "pos": "noun", "phonetic": "/ˈsteɪkˌhoʊldər/", "audioUrl": "", "definitionEn": "Person with interest.", "meaningVi": "cổ đông/lợi ích liên quan", "examples": ["Engage stakeholders early.", "Stakeholder approval is needed."] },
+        { "id": "be-17", "termEn": "market", "pos": "noun", "phonetic": "/ˈmɑːrkɪt/", "audioUrl": "", "definitionEn": "Area of trade.", "meaningVi": "thị trường", "examples": ["Study the market.", "Enter new markets."] },
+        { "id": "be-18", "termEn": "competitor", "pos": "noun", "phonetic": "/kəmˈpɛtɪtər/", "audioUrl": "", "definitionEn": "Rival in business.", "meaningVi": "đối thủ", "examples": ["Know your competitors.", "Competitor analysis is key."] },
+        { "id": "be-19", "termEn": "presentation", "pos": "noun", "phonetic": "/ˌprɛzənˈteɪʃən/", "audioUrl": "", "definitionEn": "Public talk on a topic.", "meaningVi": "bài thuyết trình", "examples": ["Prepare the presentation.", "The presentation impressed all."] },
+        { "id": "be-20", "termEn": "performance", "pos": "noun", "phonetic": "/pərˈfɔːrməns/", "audioUrl": "", "definitionEn": "How well something works.", "meaningVi": "hiệu suất", "examples": ["Improve performance.", "Track team performance."] },
+        { "id": "be-21", "termEn": "department", "pos": "noun", "phonetic": "/dɪˈpɑːrtmənt/", "audioUrl": "", "definitionEn": "Division of a company.", "meaningVi": "phòng ban", "examples": ["HR department hired staff.", "Each department has a budget."] },
+        { "id": "be-22", "termEn": "resource", "pos": "noun", "phonetic": "/rɪˈsɔːrs/", "audioUrl": "", "definitionEn": "Supply to use.", "meaningVi": "tài nguyên", "examples": ["Allocate resources well.", "Resource planning matters."] },
+        { "id": "be-23", "termEn": "innovation", "pos": "noun", "phonetic": "/ˌɪnəˈveɪʃən/", "audioUrl": "", "definitionEn": "New ideas or methods.", "meaningVi": "đổi mới", "examples": ["We value innovation.", "Innovation drives growth."] },
+        { "id": "be-24", "termEn": "productivity", "pos": "noun", "phonetic": "/ˌprɒdʌkˈtɪvɪti/", "audioUrl": "", "definitionEn": "Rate of output.", "meaningVi": "năng suất", "examples": ["Increase productivity.", "Tools boost productivity."] },
+        { "id": "be-25", "termEn": "revenue", "pos": "noun", "phonetic": "/ˈrɛvənjuː/", "audioUrl": "", "definitionEn": "Income from sales.", "meaningVi": "doanh thu", "examples": ["Revenue grew 10%.", "Track monthly revenue."] },
+        { "id": "be-26", "termEn": "expense", "pos": "noun", "phonetic": "/ɪkˈspɛns/", "audioUrl": "", "definitionEn": "Money spent.", "meaningVi": "chi phí", "examples": ["Cut expenses.", "Report travel expenses."] },
+        { "id": "be-27", "termEn": "profit", "pos": "noun", "phonetic": "/ˈprɒfɪt/", "audioUrl": "", "definitionEn": "Financial gain.", "meaningVi": "lợi nhuận", "examples": ["Maximize profit.", "Profit margin improved."] },
+        { "id": "be-28", "termEn": "loss", "pos": "noun", "phonetic": "/lɒs/", "audioUrl": "", "definitionEn": "Amount lost.", "meaningVi": "thua lỗ", "examples": ["Avoid losses.", "Reported a small loss."] },
+        { "id": "be-29", "termEn": "investment", "pos": "noun", "phonetic": "/ɪnˈvɛstmənt/", "audioUrl": "", "definitionEn": "Money put in for return.", "meaningVi": "đầu tư", "examples": ["Secure investment.", "Good investment strategy."] },
+        { "id": "be-30", "termEn": "forecast", "pos": "noun", "phonetic": "/ˈfɔːrkæst/", "audioUrl": "", "definitionEn": "Prediction of future.", "meaningVi": "dự báo", "examples": ["Sales forecast is strong.", "Update the forecast."] },
+        { "id": "be-31", "termEn": "capacity", "pos": "noun", "phonetic": "/kəˈpæsɪti/", "audioUrl": "", "definitionEn": "Ability or volume.", "meaningVi": "công suất/năng lực", "examples": ["Increase capacity.", "Operating at full capacity."] },
+        { "id": "be-32", "termEn": "efficiency", "pos": "noun", "phonetic": "/ɪˈfɪʃənsi/", "audioUrl": "", "definitionEn": "Doing things well.", "meaningVi": "hiệu quả", "examples": ["Boost efficiency.", "Efficiency saves costs."] },
+        { "id": "be-33", "termEn": "workflow", "pos": "noun", "phonetic": "/ˈwɜːrkfloʊ/", "audioUrl": "", "definitionEn": "Sequence of tasks.", "meaningVi": "quy trình công việc", "examples": ["Optimize workflow.", "Workflow automation helps."] },
+        { "id": "be-34", "termEn": "priority", "pos": "noun", "phonetic": "/praɪˈɔːrɪti/", "audioUrl": "", "definitionEn": "Most important thing.", "meaningVi": "ưu tiên", "examples": ["Set priorities.", "Top priority is quality."] },
+        { "id": "be-35", "termEn": "delegate", "pos": "verb", "phonetic": "/ˈdɛlɪɡeɪt/", "audioUrl": "", "definitionEn": "Assign tasks.", "meaningVi": "giao việc", "examples": ["Delegate effectively.", "We delegated tasks."] },
+        { "id": "be-36", "termEn": "collaborate", "pos": "verb", "phonetic": "/kəˈlæbəˌreɪt/", "audioUrl": "", "definitionEn": "Work together.", "meaningVi": "hợp tác", "examples": ["Teams collaborate closely.", "Collaborate with partners."] },
+        { "id": "be-37", "termEn": "mentor", "pos": "noun", "phonetic": "/ˈmɛntɔːr/", "audioUrl": "", "definitionEn": "Experienced advisor.", "meaningVi": "người cố vấn", "examples": ["Find a mentor.", "Mentor guides juniors."] },
+        { "id": "be-38", "termEn": "onboarding", "pos": "noun", "phonetic": "/ˈɒnbɔːrdɪŋ/", "audioUrl": "", "definitionEn": "Integrating new hires.", "meaningVi": "hòa nhập nhân sự", "examples": ["Improve onboarding.", "Onboarding takes one week."] },
+        { "id": "be-39", "termEn": "promotion", "pos": "noun", "phonetic": "/prəˈmoʊʃən/", "audioUrl": "", "definitionEn": "Advancement in rank.", "meaningVi": "thăng chức", "examples": ["He got a promotion.", "Promotion policy updated."] },
+        { "id": "be-40", "termEn": "bonus", "pos": "noun", "phonetic": "/ˈboʊnəs/", "audioUrl": "", "definitionEn": "Extra payment.", "meaningVi": "tiền thưởng", "examples": ["Year-end bonus.", "Bonus motivates staff."] },
+        { "id": "be-41", "termEn": "compliance", "pos": "noun", "phonetic": "/kəmˈplaɪəns/", "audioUrl": "", "definitionEn": "Following rules.", "meaningVi": "tuân thủ", "examples": ["Ensure compliance.", "Compliance training required."] },
+        { "id": "be-42", "termEn": "audit", "pos": "noun", "phonetic": "/ˈɔːdɪt/", "audioUrl": "", "definitionEn": "Examination of accounts.", "meaningVi": "kiểm toán", "examples": ["Annual audit.", "Audit report delivered."] },
+        { "id": "be-43", "termEn": "liability", "pos": "noun", "phonetic": "/laɪəˈbɪlɪti/", "audioUrl": "", "definitionEn": "Legal responsibility.", "meaningVi": "trách nhiệm pháp lý", "examples": ["Limit liability.", "Company liability covered."] },
+        { "id": "be-44", "termEn": "warranty", "pos": "noun", "phonetic": "/ˈwɔːrənti/", "audioUrl": "", "definitionEn": "Guarantee of quality.", "meaningVi": "bảo hành", "examples": ["One-year warranty.", "Warranty terms apply."] },
+        { "id": "be-45", "termEn": "logistics", "pos": "noun", "phonetic": "/loʊˈdʒɪstɪks/", "audioUrl": "", "definitionEn": "Transport and supply.", "meaningVi": "hậu cần", "examples": ["Logistics improved.", "Handle logistics well."] },
+        { "id": "be-46", "termEn": "inventory", "pos": "noun", "phonetic": "/ˈɪnvəntɔːri/", "audioUrl": "", "definitionEn": "Stock of goods.", "meaningVi": "hàng tồn kho", "examples": ["Check inventory.", "Inventory is low."] },
+        { "id": "be-47", "termEn": "supplier", "pos": "noun", "phonetic": "/səˈplaɪər/", "audioUrl": "", "definitionEn": "Provider of goods.", "meaningVi": "nhà cung cấp", "examples": ["Find new suppliers.", "Supplier meets standards."] },
+        { "id": "be-48", "termEn": "shipping", "pos": "noun", "phonetic": "/ˈʃɪpɪŋ/", "audioUrl": "", "definitionEn": "Delivery of goods.", "meaningVi": "vận chuyển", "examples": ["Shipping time reduced.", "Free shipping available."] },
+        { "id": "be-49", "termEn": "return", "pos": "noun", "phonetic": "/rɪˈtɜːrn/", "audioUrl": "", "definitionEn": "Sending back goods.", "meaningVi": "trả hàng", "examples": ["Return policy clear.", "No-hassle returns."] },
+        { "id": "be-50", "termEn": "refund", "pos": "noun", "phonetic": "/ˈriːfʌnd/", "audioUrl": "", "definitionEn": "Money back.", "meaningVi": "hoàn tiền", "examples": ["Full refund issued.", "Refund within 7 days."] }
+      ]
+    },
+    {
+      "id": "travel-english",
+      "name": "Travel English",
+      "level": "Beginner",
+      "words": [
+        { "id": "tr-1", "termEn": "ticket", "pos": "noun", "phonetic": "/ˈtɪkɪt/", "audioUrl": "", "definitionEn": "A pass for travel.", "meaningVi": "vé", "examples": ["Buy a ticket.", "Keep your ticket safe."] },
+        { "id": "tr-2", "termEn": "passport", "pos": "noun", "phonetic": "/ˈpæspɔːrt/", "audioUrl": "", "definitionEn": "Official travel document.", "meaningVi": "hộ chiếu", "examples": ["Check your passport.", "Passport expires soon."] }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,105 @@
+/* User Profile Page Styles */
+
+.user-profile-page {
+  --transition-smooth: all 0.3s ease;
+}
+
+/* Custom scrollbar for history */
+.user-profile-page ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.user-profile-page ::-webkit-scrollbar-track {
+  background: #f1f1f3;
+  border-radius: 10px;
+}
+
+.user-profile-page ::-webkit-scrollbar-thumb {
+  background: #46ce83;
+  border-radius: 10px;
+}
+
+.user-profile-page ::-webkit-scrollbar-thumb:hover {
+  background: #89dc7e;
+}
+
+/* Card animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-profile-page > div > div {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Button hover effects */
+.user-profile-page button {
+  transition: var(--transition-smooth);
+}
+
+.user-profile-page button:active {
+  transform: scale(0.98);
+}
+
+/* Progress bar animations */
+@keyframes fillProgress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.user-profile-page .bg-mint-50 {
+  transition: var(--transition-smooth);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .user-profile-page {
+    padding: 1rem;
+  }
+
+  .user-profile-page h1 {
+    font-size: 1.875rem;
+  }
+}
+
+/* Achievement badge hover */
+.user-profile-page [class*='opacity-50']:hover {
+  opacity: 0.75;
+  transition: var(--transition-smooth);
+}
+
+/* History timeline */
+.user-profile-page .border-l-2 {
+  position: relative;
+}
+
+.user-profile-page .border-l-2::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  background: #46ce83;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Smooth color transitions */
+.user-profile-page .text-mint-50,
+.user-profile-page .text-gray-15,
+.user-profile-page .text-gray-40 {
+  transition: color 0.2s ease;
+}
+
