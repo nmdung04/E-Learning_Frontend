@@ -17,6 +17,10 @@ import RequireAuth from "@/modules/auth/RequireAuth";
 import AppLayout from "./AppLayout";
 import AuthLayout from "./AuthLayout";
 import SpeakingLearningPage from "@/modules/learning/speaking/page";
+import { ExamListPage } from "@/modules/exam/pages/ExamListPage";
+import { ExamTakingPage } from "@/modules/exam/pages/ExamTakingPage";
+import { ExamHistoryPage } from "@/modules/exam/pages/ExamHistoryPage";
+import { ExamReviewPage } from "@/modules/exam/pages/ExamReviewPage";
 
 const AppRoutes = () => {
   return (
@@ -91,6 +95,40 @@ const AppRoutes = () => {
             </RequireAuth>
           }
         />
+           
+          {/* Exam Routes */}
+          <Route
+            path="/exams"
+            element={
+              <RequireAuth>
+                <ExamListPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/exams/history"
+            element={
+              <RequireAuth>
+                <ExamHistoryPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/exams/:lessonId"
+            element={
+              <RequireAuth>
+                <ExamTakingPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/exams/review/:userLessonId"
+            element={
+              <RequireAuth>
+                <ExamReviewPage />
+              </RequireAuth>
+            }
+          />
       </Route> {/* <--- Bổ sung thẻ đóng này */}
 
       {/* Catch-all route */}

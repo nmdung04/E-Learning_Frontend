@@ -23,7 +23,10 @@
     "react-hook-form": "^7.69.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.11.0",
+<<<<<<< HEAD
+=======
     "tailwind-merge": "^3.4.0",
+>>>>>>> 4aab2ca75a5f50688e7425c7638ff27ffb2fea40
     "zod": "^4.3.5"
   },
   "devDependencies": {

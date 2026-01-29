@@ -47,8 +47,8 @@ const ForgotPasswordForm = () => {
   };
 
   return (
-    <div className="min-h-screen w-[100vw] bg-white-97 flex items-center justify-center p-4 lg:p-8 font-sans">
-      <div className="w-full max-w-[560px] bg-white-99 rounded-3xl lg:rounded-[40px] shadow-2xl overflow-hidden">
+    <div className="min-h-screen w-screen bg-white-97 flex items-center justify-center p-4 lg:p-8 font-sans">
+      <div className="w-full max-w-140 bg-white-99 rounded-3xl lg:rounded-[40px] shadow-2xl overflow-hidden">
         {/* Header Section */}
         <div className="text-center pt-8 pb-6 px-6 lg:pt-10 lg:pb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-15 mb-2">
