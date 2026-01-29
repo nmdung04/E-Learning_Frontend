@@ -21,7 +21,7 @@ type NavLink = {
 const navLinks: NavLink[] = [
   { href: "/", label: "Home", ariaLabel: "Home page" },
   { href: "/topics", label: "Courses", ariaLabel: "Browse available courses" },
-  { href: "/vocab/topics", label: "Vocabulary", ariaLabel: "Vocabulary learning page" },
+  { href: "/exams", label: "Examination", ariaLabel: "Take exams" },
   { href: "/about", label: "About", ariaLabel: "About our platform" },
   { href: "/vocab", label: "Vocabulary", ariaLabel: "Vocabulary learning page" },
 ];

@@ -7,7 +7,7 @@ const AppLayout = () => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col">
       <Header isLoggedIn={isAuthenticated} />
       <main className="flex-1 w-full">
         <Outlet />
